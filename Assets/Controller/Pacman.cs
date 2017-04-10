@@ -16,7 +16,23 @@ public class Pacman : MonoBehaviour {
     }
     public void moveRight()
     {   
-         x += 0.1f;
+         x -= 0.5f;
          GameData.pacx = x;
     }
+    public void moveLeft()
+    {
+        x += 0.5f;
+        GameData.pacx = x;
+    }
+    public void moveUp()
+    {
+        y += 0.5f;
+        GameData.pacy = y;
+    }
+    public void moveDown()
+    {
+        y -= 0.5f;
+        GameData.pacy = y;
+    }
+
 }
