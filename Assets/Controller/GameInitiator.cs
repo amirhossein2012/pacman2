@@ -7,7 +7,7 @@ public class GameInitiator  {
 	// Use this for initialization
 	public static void Start() {
         MapGenerator.generate();
-       
+        RandomPacman.randomPlace();
         
 	}
 	
