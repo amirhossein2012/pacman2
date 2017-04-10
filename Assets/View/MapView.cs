@@ -42,6 +42,6 @@ public class MapView : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-		
+        
 	}
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameData  {
     //Game database
     public static int row, col, square_size, wall_density,pac_row,pac_col;
+    public static float pacx, pacy;
     public static int[,] map;
     public static void initiate()
     {
