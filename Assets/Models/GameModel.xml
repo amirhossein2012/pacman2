@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameModel>
+  <row>20</row>
+  <col>20</col>
+  <squaresize>20</squaresize>
+  <ghostcount>3</ghostcount>
+  <wallDensity>30</wallDensity>
+  <gamespeed>70</gamespeed>
+</GameModel>
