@@ -24,6 +24,11 @@ public class MapGenerator  {
             
             for(int j = 0; j < col; j++)
             {
+                if(i==0 || i==row-1 || j==0 || j == col - 1)
+                {
+                    map[i, j] = -1;
+                    continue;
+                }
                 int k=rnd.Next() % 100+1;
                 //should be done : check if map is valid or not
                 // 

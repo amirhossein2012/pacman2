@@ -7,6 +7,7 @@ public class MapView : MonoBehaviour {
     // Use this for initialization
     
     public GameObject[,] obj;
+    public GameObject pacman;
     int row, col;
     // Use this for initialization
     void initiate()
@@ -19,18 +20,28 @@ public class MapView : MonoBehaviour {
     void Start()
     {
         initiate();
-        obj = new GameObject[row+1,col+1];
+        
+        obj = new GameObject[row,col];
         char x = '0';
-        for (int i = 0; i <= row; i++)
+        pacman = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        bool e = true;
+        for (int i = 0; i < row; i++)
         {
-            for (int j = 0; j <= col; j++) {
-                if (i == 0 || i == row || j == 0 || j == col || GameData.map[i, j] == -1 )
+            for (int j = 0; j < col; j++) {
+                if( GameData.map[i,j]==1 && e)
+                {
+                    e = false;
+                    pacman.transform.position = new Vector3(i, j, 0);
+                    pacman.GetComponent<Renderer>().material.color = Color.red;
+                  
+                }
+                if (GameData.map[i, j] == -1 )
                 {
                     obj[i, j] = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
                     obj[i, j].transform.position = new Vector3(i, j, 0);
                     obj[i, j].GetComponent<Renderer>().material.color = Color.blue;
-                    obj[i, j].GetComponent<BoxCollider>().isTrigger = true;
+                    
 
 
                     obj[i, j].name = "cube" + x;
