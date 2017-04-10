@@ -42,6 +42,6 @@ public class MapView : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        pacman.transform.position = new Vector3(Time.time, GameData.pac_col, 0);
+        pacman.transform.position = new Vector3(GameData.pacx, GameData.pac_col, 0);
 	}
 }
