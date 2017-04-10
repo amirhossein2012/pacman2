@@ -7,6 +7,7 @@ public class MapGenerator  {
     static int row, col,wall_density;
     static int[,] map;
     static System.Random rnd ;
+
     public static  void generate()
     {
         row = GameData.row;
@@ -32,20 +33,28 @@ public class MapGenerator  {
                 int k=rnd.Next() % 100+1;
                 //should be done : check if map is valid or not
                 // 
-                if (k > wall_density)
+                if (k < wall_density && isValidMaze(i, j))
                 {
-                    map[i, j] = 1;
+                    map[i, j] = -1;
+                }
+                else if(map[i,j-1]==-1 && map[i, j + 1] == -1)
+                {
+                    map[i, j] = -1;
                 }
                 else
                 {
-                    map[i, j] = -1;
+                    map[i, j] = 1;
                 }
             }
         }
     }
-    static bool isValid()
+    static bool isValidMaze(int x, int y)
     {
-        //check if wall is ok or not
+        if (map[x, y - 1] == 1 && map[x, y - 2] == -1 && map[x-1,y-1] == -1)
+            return false;
+        if (map[x - 1, y] == 1 && (map[x - 1, y - 1] == -1 || map[x - 1, y + 1] == -1) && map[x - 2, y] == -1)
+            return false;
+
         return true;
     }
 
