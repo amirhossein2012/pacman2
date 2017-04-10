@@ -11,7 +11,7 @@ public class move : MonoBehaviour {
 	void Start () {
         p = new Pacman();
 	}
-    Move lastMove;
+    Move lastMove=Move.right;
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.A))
@@ -54,6 +54,10 @@ public class move : MonoBehaviour {
 
         }
 
+        if (noWall(lastMove))
+        {
+            go(lastMove);
+        }
         /*for(int i = 0; i < 100; i++)
         {
             if(Time.time == time + i)
@@ -61,5 +65,68 @@ public class move : MonoBehaviour {
                 p.moveRight();
             }
         }*/
+    }
+    bool noWall(Move lastMove)
+    {
+        if(lastMove == Move.right)
+        {
+            int k = (int)(GameData.pacx - 0.1f);
+            if((float)k == GameData.pacx - 0.1f)
+            {
+                if (GameData.map[k, (int)GameData.pacy] != -1)
+                    return true;
+            }
+        }
+        if (lastMove == Move.left)
+        {
+            int k = (int)(GameData.pacx + 0.1f);
+            if ((float)k == GameData.pacx+- 0.1f)
+            {
+                if (GameData.map[k, (int)GameData.pacy] != -1)
+                    return true;
+            }
+
+        }
+        if (lastMove == Move.up)
+        {
+            int k = (int)(GameData.pacy + 0.1f);
+            if ((float)k == GameData.pacy + 0.1f)
+            {
+                if (GameData.map[(int)GameData.pacx, k] != -1)
+                    return true;
+            }
+
+        }
+        if (lastMove == Move.down)
+        {
+            int k = (int)(GameData.pacy - 0.1f);
+            if ((float)k == GameData.pacy - 0.1f)
+            {
+                if (GameData.map[(int)GameData.pacx, k] != -1)
+                    return true;
+            }
+
+        }
+        return false;
+    }
+    void go(Move dir)
+    {
+        if(dir == Move.right)
+        {
+            p.moveRight();
+        }
+        if (dir == Move.left)
+        {
+            p.moveLeft();
+        }
+        if (dir == Move.up)
+        {
+            p.moveUp();
+        }
+        if (dir == Move.down)
+        {
+            p.moveDown();
+        }
+
     }
 }

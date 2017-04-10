@@ -19,5 +19,7 @@ public class RandomPacman : MonoBehaviour {
         }
         GameData.pac_row = x;
         GameData.pac_col = y;
+        GameData.pacx = x;
+        GameData.pacy = y;
     }
 }
