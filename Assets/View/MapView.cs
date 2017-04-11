@@ -6,8 +6,8 @@ public class MapView : MonoBehaviour {
 
     // Use this for initialization
     
-    public GameObject[,] obj;
-    public GameObject pacman;
+    public static GameObject[,] obj;
+    public static GameObject pacman;
     int row, col;
     // Use this for initialization
     void initiate()

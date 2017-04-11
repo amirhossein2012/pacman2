@@ -59,6 +59,21 @@ public class Pacman : MonoBehaviour {
         {
             x += xc;
             y += yc;
+            if(x - (int)x ==0 && y - (int)y == 0)
+            {
+                pac_row =(int) x;
+                pac_col = (int) y;
+                eat(pac_row,pac_col);
+            }
+        }
+    }
+    private static void eat(int a, int b)
+    {
+        if (GameData.map[a, b] > 0)
+        {
+            GameData.map[a, b] = 0;
+            Destroy(MapView.obj[a, b]);
+
         }
     }
     
