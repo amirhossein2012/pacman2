@@ -36,6 +36,14 @@ public class MapView : MonoBehaviour {
                     obj[i, j].transform.position = new Vector3(i, j, 0);
                     obj[i, j].GetComponent<Renderer>().material.color = Color.blue;
                 }
+                if (GameData.map[i, j] == 1)
+                {
+                    obj[i, j] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
+                    obj[i, j].transform.position = new Vector3(i, j, 0);
+                    obj[i, j].transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                    obj[i, j].GetComponent<Renderer>().material.color = Color.yellow;
+                }
             }
 
         }
