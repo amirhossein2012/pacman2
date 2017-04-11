@@ -17,6 +17,7 @@ public class RandomPacman : MonoBehaviour {
             x = rnd.Next() % row + 1;
             y = rnd.Next() % col + 1;
         }
+        Debug.Log(x + " " + y + " :: " + GameData.map[x, y]);
         GameData.pac_row = x;
         GameData.pac_col = y;
         GameData.pacx = x;

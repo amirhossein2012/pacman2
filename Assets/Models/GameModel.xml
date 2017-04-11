@@ -5,5 +5,5 @@
   <squaresize>20</squaresize>
   <ghostcount>3</ghostcount>
   <wallDensity>30</wallDensity>
-  <gamespeed>70</gamespeed>
+  <gamespeed>0.06</gamespeed>
 </GameModel>

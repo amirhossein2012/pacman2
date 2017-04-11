@@ -7,6 +7,7 @@ public class GameModelLoader{
 
     //Get data from xml file
     public static int row,col,square_size,wall_density;
+    public static float game_speed;
     static GameModelLoader() { 
         XmlDocument doc = new XmlDocument();
         doc.Load("Assets\\Models\\GameModel.xml");
@@ -35,7 +36,13 @@ public class GameModelLoader{
         {
             wall_density =XmlConvert.ToInt32( x.InnerText);
         }
-       
+        elemList = doc.GetElementsByTagName("gamespeed");
+
+        foreach (XmlNode x in elemList)
+        {
+            game_speed = (float)XmlConvert.ToDouble(x.InnerText);
+        }
+
 
     }
 }
