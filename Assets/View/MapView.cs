@@ -7,7 +7,7 @@ public class MapView : MonoBehaviour {
     // Use this for initialization
     
     public static GameObject[,] obj;
-    public static GameObject pacman;
+    public static GameObject pacman,ghost1,ghost2;
     int row, col;
     // Use this for initialization
     void initiate()
@@ -20,11 +20,26 @@ public class MapView : MonoBehaviour {
     void Start()
     {
         initiate();
-        
         obj = new GameObject[row,col];
+
+        //creating pacman
+
         pacman = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         pacman.transform.position = new Vector3(GameData.pac_row, GameData.pac_col, 0);
         pacman.GetComponent<Renderer>().material.color = Color.red;
+
+        //creating ghost
+
+        ghost1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        ghost1.transform.position = new Vector3(GameInitiator.g1.x, GameInitiator.g1.y, 0);
+        ghost1.GetComponent<Renderer>().material.color = Color.green;
+
+        ghost2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        ghost2.transform.position = new Vector3(GameInitiator.g2.x, GameInitiator.g2.y, 0);
+        ghost2.GetComponent<Renderer>().material.color = Color.black;
+
+        //creating map
+
         for (int i = 0; i < row; i++)
         {
             for (int j = 0; j < col; j++) {

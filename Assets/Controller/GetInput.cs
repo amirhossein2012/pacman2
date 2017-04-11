@@ -13,8 +13,7 @@ public class GetInput : MonoBehaviour {
     dir d;
     // Use this for initialization
     void Start () {
-        MapGenerator.generate();
-        Pacman.initiate();
+        
         start_time = Time.time;
         d = dir.no_dir;
     }
