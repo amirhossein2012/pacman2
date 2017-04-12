@@ -6,4 +6,5 @@
   <ghostcount>3</ghostcount>
   <wallDensity>30</wallDensity>
   <gamespeed>0.06</gamespeed>
+  <health>5</health>
 </GameModel>

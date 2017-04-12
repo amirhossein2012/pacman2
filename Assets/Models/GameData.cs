@@ -6,6 +6,7 @@ public class GameData  {
     //Game database
     public static int row, col, square_size, wall_density,pac_row,pac_col;
     public static float pacx, pacy, game_speed;
+    public static int health;
     public static float eps = 0.01f;
     public static int[,] map;
     public static void initiate()
@@ -15,6 +16,7 @@ public class GameData  {
         square_size = GameModelLoader.square_size;
         wall_density = GameModelLoader.wall_density;
         game_speed = GameModelLoader.game_speed;
+        health = GameModelLoader.health;
         map = new int[row, col];
         for (int i = 0; i < row; i++)
         {

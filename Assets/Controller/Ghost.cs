@@ -80,7 +80,12 @@ public class Ghost : MonoBehaviour {
             }
             if (killPacman())
             {
-                Pacman.initiate();
+                if(Pacman.health>0)
+                    Pacman.initiate();
+                if (Pacman.health == 0)
+                {
+                    Destroy(MapView.pacman);
+                }
             }
         }
     }
@@ -88,6 +93,7 @@ public class Ghost : MonoBehaviour {
     {
         if(Math.Sqrt(Mathf.Pow(x - Pacman.x,2) + Mathf.Pow(y - Pacman.y,2)) <= 1 - GameData.eps)
         {
+            Pacman.health--;
             return true;
         }
         return false;
