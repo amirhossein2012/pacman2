@@ -2,26 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetInput : MonoBehaviour {
-    
+public class GetInput : MonoBehaviour
+{
+
     public enum dir
 
     {
-        right, left, down, up ,no_dir
+        right, left, down, up, no_dir
     }
-    float start_time,start_time2;
+    float start_time, start_time2;
     dir d;
     // Use this for initialization
-    void Start () {
-        
+    void Start()
+    {
+
         start_time = Time.time;
         start_time2 = Time.time;
         d = dir.no_dir;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Pacman.health > 0)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Pacman.health > 0 && GameData.food_count > 0)
         {
             if (Input.GetKey(KeyCode.A))
             {
@@ -65,9 +68,23 @@ public class GetInput : MonoBehaviour {
                 GameInitiator.g2.nextMove();
                 start_time2 = Time.time;
             }
-            if(Pacman.health==0)
-                Destroy(MapView.pacman); 
+            if (Pacman.health == 0)
+                Destroy(MapView.pacman);
         }
     }
-    
+
+    public void OnGUI()
+    {
+        string s = "Health : "+Pacman.health.ToString();
+        GUI.TextArea(new Rect(0, 0, 70, 20),s);
+        if (GameData.food_count <= 0)
+        {
+            GUI.TextArea(new Rect(300, 292, 100, 20), "YOU WIN");
+
+        }
+        if(Pacman.health <= 0)
+        {
+            GUI.TextArea(new Rect(300, 292,100, 20), "YOU LOST");
+        }
+    }
 }

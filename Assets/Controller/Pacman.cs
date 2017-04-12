@@ -78,7 +78,7 @@ public class Pacman : MonoBehaviour {
         {
             GameData.map[a, b] = 0;
             Destroy(MapView.obj[a, b]);
-            food_count++;
+            GameData.food_count--;
         }
     }
     

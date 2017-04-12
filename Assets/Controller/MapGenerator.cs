@@ -44,6 +44,7 @@ public class MapGenerator  {
                 else
 
                 {
+                    GameData.food_count++;
                     map[i, j] = 1;
                 }
             }

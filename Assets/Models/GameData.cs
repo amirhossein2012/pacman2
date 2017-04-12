@@ -9,6 +9,7 @@ public class GameData  {
     public static int health;
     public static float eps = 0.01f;
     public static int[,] map;
+    public static int food_count = 0;
     public static void initiate()
     {
         row = GameModelLoader.row;
