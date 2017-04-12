@@ -5,7 +5,8 @@ using System.Threading;
 public class Pacman : MonoBehaviour {
     public static int pac_row, pac_col;
     public static float x, y;
-    public static float speed = 0.5f;
+    private static float  _speed;
+    public static float speed { get { return _speed; } private set { _speed = value;} }
     public static GetInput.dir last_dir;
     public static void initiate()
     {
@@ -15,6 +16,7 @@ public class Pacman : MonoBehaviour {
         x = pac_row;
         y = pac_col;
         Debug.Log(x + " " + y);
+        speed = 0.5f;
     }
     public static void move(GetInput.dir dir)
     {

@@ -68,7 +68,7 @@ public class Ghost : MonoBehaviour {
     }
     public bool killPacman()
     {
-        if(Math.Sqrt(Mathf.Pow(x - Pacman.x,2) + Mathf.Pow(y - Pacman.y,2)) <= 1)
+        if(Math.Sqrt(Mathf.Pow(x - Pacman.x,2) + Mathf.Pow(y - Pacman.y,2)) <= 0.97f)
         {
             return true;
         }
