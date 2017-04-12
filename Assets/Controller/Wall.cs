@@ -14,4 +14,10 @@ public class Wall : MonoBehaviour {
         }
         return false;
     }
+    public static bool validMove(float new_x, float new_y)
+    {
+        if (new_x - (int)new_x != 0 && new_y - (int)new_y != 0)
+            return false;
+        return true;
+    }
 }

@@ -46,16 +46,11 @@ public class Pacman : MonoBehaviour {
         go(xchange, ychange);
         
     }
-    public static bool validMove(float new_x , float new_y)
-    {
-        if (new_x - (int)new_x != 0 && new_y - (int)new_y != 0)
-            return false;
-        return true;
-    }
+    
     public static void go(float xc , float yc)
     {
         
-        if(validMove(x+xc , y+yc) && Wall.noWall(x + xc , y + yc))
+        if(Wall.validMove(x+xc , y+yc) && Wall.noWall(x + xc , y + yc))
         {
             x += xc;
             y += yc;

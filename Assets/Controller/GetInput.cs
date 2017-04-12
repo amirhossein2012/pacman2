@@ -52,6 +52,10 @@ public class GetInput : MonoBehaviour {
             }
             else
                 Pacman.move(dir.no_dir);
+
+            GameInitiator.g1.nextMove();
+            GameInitiator.g2.nextMove();
+
             start_time = Time.time;
        
         }

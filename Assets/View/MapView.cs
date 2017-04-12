@@ -67,5 +67,7 @@ public class MapView : MonoBehaviour {
     void Update () {
 
         pacman.transform.position = new Vector3(Pacman.x, Pacman.y, 0);
-	}
+        ghost1.transform.position = new Vector3(GameInitiator.g1.x, GameInitiator.g1.y, 0);
+        ghost2.transform.position = new Vector3(GameInitiator.g2.x, GameInitiator.g2.y, 0);
+    }
 }
