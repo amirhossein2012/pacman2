@@ -10,16 +10,16 @@ public class Ghost : MonoBehaviour {
     public Ghost()
     {
 
-        rnd = new System.Random();
+        rnd = new System.Random(((int)DateTime.Now.Ticks & 0x0000FFFF));
 
         int row = GameData.row;
         int col = GameData.col;
-        while (GameData.map[grow, gcol] == -1 || (grow == GameData.pac_row && gcol == GameData.pac_col))
-        {
+        
+        do{
             grow = rnd.Next() % row + 1;
             gcol = rnd.Next() % col + 1;
-        }
-        x = grow;
+        } while (GameData.map[grow, gcol] == -1 || (grow == GameData.pac_row && gcol == GameData.pac_col)) ;
+            x = grow;
         y = gcol;
         GameData.map[grow, gcol] = -1;
 
@@ -60,6 +60,18 @@ public class Ghost : MonoBehaviour {
                 gcol = (int)y;
 
             }
+            if (killPacman())
+            {
+                Pacman.initiate();
+            }
         }
+    }
+    public bool killPacman()
+    {
+        if(Math.Sqrt(Mathf.Pow(x - Pacman.x,2) + Mathf.Pow(y - Pacman.y,2)) <= 1)
+        {
+            return true;
+        }
+        return false;
     }
 }
