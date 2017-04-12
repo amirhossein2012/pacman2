@@ -21,49 +21,53 @@ public class GetInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       
-        if (Input.GetKey(KeyCode.A) )
+        if (Pacman.health > 0)
         {
-            d = dir.left;
-        }
-        if (Input.GetKey(KeyCode.D) )
-        {
-            d = dir.right;
-        }
-        if (Input.GetKey(KeyCode.W) )
-        {
-            d = dir.up;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            d = dir.down;
-        }
-        if(Time.time - start_time >= (GameData.game_speed))
-        {
-
-            if ((d == dir.right || d == dir.left) && Pacman.y - (int)Pacman.y == 0)
+            if (Input.GetKey(KeyCode.A))
             {
-                Pacman.move(d);
-                d = dir.no_dir;
+                d = dir.left;
             }
-            else if ((d == dir.up || d == dir.down) && Pacman.x - (int)Pacman.x == 0)
+            if (Input.GetKey(KeyCode.D))
             {
-                Pacman.move(d);
-                d = dir.no_dir;
+                d = dir.right;
             }
-            else
-                Pacman.move(dir.no_dir);
+            if (Input.GetKey(KeyCode.W))
+            {
+                d = dir.up;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                d = dir.down;
+            }
+            if (Time.time - start_time >= (GameData.game_speed))
+            {
 
-            start_time = Time.time;
-       
+                if ((d == dir.right || d == dir.left) && Pacman.y - (int)Pacman.y == 0)
+                {
+                    Pacman.move(d);
+                    d = dir.no_dir;
+                }
+                else if ((d == dir.up || d == dir.down) && Pacman.x - (int)Pacman.x == 0)
+                {
+                    Pacman.move(d);
+                    d = dir.no_dir;
+                }
+                else
+                    Pacman.move(dir.no_dir);
+
+                start_time = Time.time;
+
+            }
+            if (Time.time - start_time2 >= (GameData.game_speed) * 1.5f)
+            {
+
+                GameInitiator.g1.nextMove();
+                GameInitiator.g2.nextMove();
+                start_time2 = Time.time;
+            }
+            if(Pacman.health==0)
+                Destroy(MapView.pacman); 
         }
-        if( Time.time - start_time2 >= (GameData.game_speed)*1.5f)
-        {
-
-            GameInitiator.g1.nextMove();
-            GameInitiator.g2.nextMove();
-            start_time2 = Time.time;
-        }
-
     }
+    
 }

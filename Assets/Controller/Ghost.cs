@@ -48,7 +48,6 @@ public class Ghost : MonoBehaviour {
         int next_cell = ShortestPath.next[ghost_cell, pacman_cell];
         if(x - (int)x <= GameData.eps && y - (int)y <= GameData.eps)
         {
-            Debug.Log(next_cell + " " + ghost_cell);
 
             int a = findPosX(next_cell) - findPosX(ghost_cell);
             int b= findPosY(next_cell) - findPosY(ghost_cell);
@@ -67,7 +66,8 @@ public class Ghost : MonoBehaviour {
     }
     public  void go(float xc, float yc)
     {
-
+        
+        
         if (Wall.validMove(x + xc, y + yc) && Wall.noWall(x + xc, y + yc))
         {
             x += xc;
@@ -82,10 +82,7 @@ public class Ghost : MonoBehaviour {
             {
                 if(Pacman.health>0)
                     Pacman.initiate();
-                if (Pacman.health == 0)
-                {
-                    Destroy(MapView.pacman);
-                }
+                
             }
         }
     }

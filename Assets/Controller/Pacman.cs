@@ -13,7 +13,6 @@ public class Pacman : MonoBehaviour {
     public static void initiate()
     {
         Thread.Sleep(300);
-
         RandomPacman.randomPlace();
         pac_row = GameData.pac_row;
         pac_col = GameData.pac_col;
@@ -54,9 +53,15 @@ public class Pacman : MonoBehaviour {
     
     public static void go(float xc , float yc)
     {
-        
-        if(Wall.validMove(x+xc , y+yc) && Wall.noWall(x + xc , y + yc))
+        if (health <= 0)
         {
+            Destroy(MapView.pacman);
+            return;
+        }
+        else if (Wall.validMove(x+xc , y+yc) && Wall.noWall(x + xc , y + yc))
+        {
+            Debug.Log("kidding me?");
+            Debug.Log(health);
             x += xc;
             y += yc;
             if(x - (int)x ==0 && y - (int)y == 0)
