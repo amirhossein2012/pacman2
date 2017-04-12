@@ -10,7 +10,7 @@ public class GetInput : MonoBehaviour
     {
         right, left, down, up, no_dir
     }
-    float start_time, start_time2;
+    float start_time, start_time2 , start_time3;
     dir d;
     // Use this for initialization
     void Start()
@@ -18,6 +18,7 @@ public class GetInput : MonoBehaviour
 
         start_time = Time.time;
         start_time2 = Time.time;
+        start_time3 = Time.time;
         d = dir.no_dir;
     }
 
@@ -65,8 +66,15 @@ public class GetInput : MonoBehaviour
             {
 
                 GameInitiator.g1.nextMove();
-                GameInitiator.g2.nextMove();
+                
                 start_time2 = Time.time;
+            }
+            if (Time.time - start_time3 >= (GameData.game_speed) * 1.8f)
+            {
+
+                
+                GameInitiator.g2.nextMove();
+                start_time3 = Time.time;
             }
             if (Pacman.health == 0)
                 Destroy(MapView.pacman);
