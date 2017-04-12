@@ -9,6 +9,7 @@ public class GameInitiator  {
         MapGenerator.generate();
         
         Pacman.initiate();
+        ShortestPath.initiate();
         g1 = new Ghost();
         g2 = new Ghost();
         GameData.map[g1.grow, g1.gcol] = 1;

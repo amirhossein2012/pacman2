@@ -9,12 +9,13 @@ public class GetInput : MonoBehaviour {
     {
         right, left, down, up ,no_dir
     }
-    float start_time;
+    float start_time,start_time2;
     dir d;
     // Use this for initialization
     void Start () {
         
         start_time = Time.time;
+        start_time2 = Time.time;
         d = dir.no_dir;
     }
 	
@@ -53,12 +54,16 @@ public class GetInput : MonoBehaviour {
             else
                 Pacman.move(dir.no_dir);
 
-            GameInitiator.g1.nextMove();
-            GameInitiator.g2.nextMove();
-
             start_time = Time.time;
        
         }
-        
+        if( Time.time - start_time2 >= (GameData.game_speed)*1.5f)
+        {
+
+            GameInitiator.g1.nextMove();
+            GameInitiator.g2.nextMove();
+            start_time2 = Time.time;
+        }
+
     }
 }

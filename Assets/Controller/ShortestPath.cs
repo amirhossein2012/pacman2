@@ -7,36 +7,36 @@ public class ShortestPath : MonoBehaviour {
     public static int[,] dp;
     public static int[,] next;
     public static int[,] table;
-    ShortestPath()
+    public static void initiate()
     {
         dp = new int[GameData.row * GameData.col, GameData.row * GameData.col];
         next = new int[GameData.row * GameData.col, GameData.row * GameData.col]; 
         table = new int[GameData.row , GameData.col];
-        initiate();
+        initiate2();
         allPairShortestPath(GameData.row * GameData.col);
     }
-    private void initiate()
+    private static void initiate2()
     {
         int inf = 1000 * 1000;
-        int l = GameData.row*GameData.col;
+        int l = GameData.row;
         for (int i = 0; i < GameData.row; i++)
 
             for (int j = 0; j < GameData.col; j++)
             {
                 table[i,j] = GameData.map[i,j];
             }
-        for (int i = 0; i < l; i++)
+        for (int i = 0; i < GameData.row * GameData.col; i++)
         {
-            for (int j = 0; j <l; j++)
+            for (int j = 0; j < GameData.row * GameData.col; j++)
             {
                 dp[i,j] = inf;
                 dp[i,i] = 0;
 
             }
         }
-        for (int i = 0; i < l; i++)
+        for (int i = 0; i < GameData.row; i++)
         {
-            for (int j = 0; j < l; j++)
+            for (int j = 0; j < GameData.col; j++)
             {
                 int k = i * GameData.col + j;
                 if (i > 0)
@@ -45,14 +45,17 @@ public class ShortestPath : MonoBehaviour {
                     {
                         dp[k,k - l] = inf;
                         dp[k - l,k] = inf;
-
+                        
                     }
                     else
                     {
                         dp[k,k - l] = 1;
                         dp[k - l,k] = 1;
+
                     }
+
                     next[k,k - l] = k - l;
+
                     next[k - l,k] = k;
                 }
                 if (j > 0)
@@ -73,8 +76,9 @@ public class ShortestPath : MonoBehaviour {
                 }
             }
         }
+        
     }
-    private void allPairShortestPath(int n)
+    private static void allPairShortestPath(int n)
     {
         int k, i, j;
         int l = GameData.row;
